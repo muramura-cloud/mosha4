@@ -1,0 +1,143 @@
+@import 'variables.scss';
+@charset 'UTF-8';
+
+//@media query {
+@mixin sp() {
+  @media (max-width: $sp) {
+    @content;
+  }
+}
+@mixin pc() {
+  @media(min-width: $pc) {
+    @content;
+  }
+}
+
+//初期化
+@mixin Initialization() {
+  top: initial;
+  bottom: initial;
+  right: initial;
+  left: initial;
+  position: initial;
+}
+
+//linkカラー
+@mixin LinkColor($color,$actionColor) {
+  color: $color;
+  text-decoration: none;
+  &:hover, &:active, &:focus {
+    color: $actionColor;
+  }
+}
+
+//背景画像
+@mixin bg_jpg($img-name,$img-size,$img-position) {
+  background-image: url("../img/#{$img-name}.jpg");
+  background-size: $img-size;
+  background-position: $img-position;
+  background-repeat: no-repeat;
+}
+@mixin bg_png($img-name,$img-size,$img-position) {
+  background-image: url("../img/#{$img-name}.png");
+  background-size: $img-size;
+  background-position: $img-position;
+  background-repeat: no-repeat;
+}
+
+//上下中央揃え
+@mixin center {
+  text-align: center;
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+//下線強化ver
+@mixin hover-underline($type: fade, $dir: null, $weight: 2px, $color: #000) {
+  @if $dir == null {
+    @if $type == fade {
+      $dir: 'top';
+    } @else if $type == slide {
+      $dir: 'center';
+    }
+  }
+  display: inline-block;
+  text-decoration: none;
+  &::after {
+    position: absolute;
+    left: 0;
+    content: '';
+    width: 100%;
+    height: $weight;
+    background: $color;
+    @if $type == fade {
+      transition: .3s;
+      opacity: 0;
+      visibility: hidden;
+      @if $dir == bottom {
+        bottom: $weight * -4;
+      } @else {
+        bottom: $weight;
+      }
+    } @else if $type == slide {
+      bottom: $weight * -2;
+      transform: scale(1, 1);
+      transition: transform .3s ease-in-out;
+      @if $dir == left-right or $dir == right-in-left {
+        transform-origin: left top;
+      } @else if $dir == right-left or $dir == left-in-right {
+        transform-origin: right top;
+      } @else {
+        transform-origin: center top;
+      }
+    }
+  }
+  &:hover::after {
+    @if $type == fade {
+      bottom: $weight * -2;
+      opacity: 1;
+      visibility: visible;
+    } @else if $type == slide {
+      @if $dir == left-in-right {
+        transform-origin: left top;
+      } @else if $dir == right-in-left {
+        transform-origin: right top;
+      }
+      transform: scale(0, 1);
+    }
+  }
+}
+
+//アロースライドボタン
+@mixin arrow-slide-btn() {
+  &::before,&::after {
+    position: absolute;
+    content: '';
+    top: 50%;
+    right: -5rem;
+    margin-top: -1.2rem;
+    width: 30px;
+    height: 30px;
+    border-right: 3px solid $white;
+    border-top: 3px solid $white;
+    transform: rotate(45deg);
+    transition: all .4s;
+  }
+  &::after {
+    opacity: 0;
+    right: -3rem;
+  }
+  &:hover {
+    &::before {
+      right: -6rem;
+      opacity: 0;
+    }
+    &::after {
+      right: -4rem;
+      opacity: 1;
+    }
+  }
+}

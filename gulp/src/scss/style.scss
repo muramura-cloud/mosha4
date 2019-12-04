@@ -1,0 +1,1050 @@
+@import 'variables.scss';
+@import 'mixin.scss';
+@import 'setting.scss';
+@charset 'UTF-8';
+
+#eyecatch {
+  position: relative;
+  overflow-x: hidden;
+  height: 830px;
+  background-color: $gray2;
+  z-index: 2;
+  @include sp() {
+    height: 700px;
+  }
+}
+.eyecatch-box {
+  width: 50%;
+  height: 100vh;
+  background-position:center center;
+  background-size: cover;
+  margin: 0  auto;
+  @include sp() {
+    width: 100%;
+    height: 100vh;
+    background-size: 100% 80%;
+    background-repeat: no-repeat;
+  }
+}
+.trigger {
+  position: fixed;
+  right: 40px;
+  top: 20px;
+  width: 50px;
+  height: 50px;
+  z-index: 21;
+  .my-parts-hidden {
+    display: none;
+  }
+  #my-parts-icon {
+    cursor: pointer;
+    display: inline-block;
+    height: 50px;
+    position: relative;
+    width: 50px;
+    @include sp() {
+      width: 35px;
+      height: 35px;
+    }
+    span {
+      background:  #333;
+      border-radius: 1px;
+      display: block;
+      height: 16%;
+      left: 50%;
+      margin: -8% 0 0 -42%;
+      position: absolute;
+      top: 50%;
+      transition: all 0.3s ease-in-out;
+      width: 84%;
+      &::before,&::after {
+        -webkit-transform: rotate(0);
+        background: #333;
+        border-radius: 1px;
+        content: "";
+        display: block;
+        height: 100%;
+        left: 50%;
+        margin: -8% 0 0 -50%;
+        position: absolute;
+        top: 50%;
+        transform: rotate(0);
+        transition: all 0.3s ease-in-out;
+        width: 100%;
+      }
+      &::before {
+        margin-top: -38%;
+      }
+      &::after {
+        margin-top: 19%;
+      }
+    }
+  }
+  #my-parts-checkbox:checked ~ #my-parts-icon span {
+    background: rgba(51, 51, 51, 0);
+    &::before,&::after {
+      content: "";
+      display: block;
+      height: 100%;
+      left: 50%;
+      margin: -8% 0 0 -42%;
+      position: absolute;
+      top: 50%;
+      width: 100%;
+    }
+    &::before {
+      transform: rotate(-45deg);
+    }
+    &::after {
+      transform: rotate(45deg);
+    }
+  }
+  @include sp() {
+    right: 10px;
+    top: 10px;
+  }
+}
+#menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  margin-left: 100vw;
+  background-color: $gray3;
+  transition: .5s ease-in-out;
+  z-index: 20;
+  nav {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 40%;
+    height: 100%;
+    background-color: $gray5;
+    padding: 0;
+    ul {
+      list-style: none;
+      padding: 0;
+      .menu-item {
+        margin-left: 600px;
+        opacity: 0;
+      }
+    }
+    @include sp() {
+      width: 100%;
+    }
+  }
+  .nav-left {
+    width: 60%;
+    height: 100%;
+    overflow-y: hidden;
+    .nav-left-img {
+      opacity: 0;
+    }
+    @include sp() {
+      width: 0;
+    }
+  }
+}
+.active {}
+.logo,.suit-logo,.shopbtn-box,.info {
+  position: absolute;
+}
+.logo {
+  top: 20px;
+  right: 120px;
+  .logo-img {
+    width: 80%;
+    @include sp() {
+      width: 60%;
+    }
+  }
+  @include sp() {
+    top: 15px;
+    right: 20px;
+  }
+}
+.suit-logo {
+  top: 80px;
+  left: 70px;
+  .suit-logo-img {
+    width: 80%;
+    margin: 0 auto;
+    @include sp() {
+      width: 50%;
+      margin: 0;
+    }
+  }
+  .suit-logo-date-img {
+    margin-top: 1rem;
+    @include sp() {
+      width: 50%;
+    }
+  }
+  @include sp() {
+    top: 20px;
+    left: 20px;
+  }
+}
+.shopbtn-box {
+  top: 360px;
+  left: 90px;
+  .shopbtn-link {
+    position: absolute;
+    display: block;
+    @include hover-underline(slide,center,5px,$white);
+    .box-for-arrow {
+      @include pc() {
+        @include arrow-slide-btn();
+      }
+      @include sp() {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        &::after {
+          position: absolute;
+          content: '';
+          top: 50%;
+          transform: rotateY(-50%);
+          width: 15px;
+          height: 15px;
+          border-right: 3px solid $white;
+          border-top: 3px solid $white;
+          transform: rotate(45deg);
+        }
+      }
+    }
+    @include sp() {
+      width: 100px;
+      height: 30px;
+      @include hover-underline(slide,center,2px,$white);
+      .shopbtn-img {
+        width: 100%;
+      }
+    }
+  }
+  @include sp() {
+    top: 170px;
+    left: 20px;
+  }
+}
+.scroll-sign {
+  position: absolute;
+  right: 40px;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: $white;
+  width: 2px;
+  height: 80px;
+  z-index: 1;
+  .scroll-sign-inner {
+    position: absolute;
+    background-color: $gray;
+    width: 2px;
+    height: 5px;
+    left: 0;
+    top: 0;
+    z-index: 4;
+    animation: indicator 5s infinite;
+  }
+}
+.info {
+  top: 720px;
+  left: 40px;
+  @include sp() {
+    top: 600px;
+    left: 20px;
+  }
+}
+@keyframes indicator {
+  0% {
+    height: 20px;
+  }
+  100% {
+    top: 80px;
+  }
+}
+
+#tvcm {
+  padding: 8rem;
+  background-color: $gray2;
+  @include sp() {
+    padding: 3rem;
+  }
+}
+.tvcm-title {
+  margin-bottom: 3rem;
+  .tvcm-img {
+    @include sp() {
+      width: 40%;
+    }
+  }
+}
+.tvcm-movie {
+  margin-bottom: 4rem;
+}
+.moviebtn-box {
+  position: relative;
+  width: 88px;
+  height: 30px;
+  margin: 0 auto;
+}
+.moviebtn-link-subtitle {
+  position: relative;
+  display: inline-block;
+  top: -3rem;
+  left: 0;
+  width: 200px;
+  transform: translateX(-25%);
+}
+.moviebtn-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  @include hover-underline(slide,center,3px,$white)
+  .box-for-arrow {
+    @include arrow-slide-btn();
+    &::before {
+      width: 15px;
+      height: 15px;
+      margin-top: -.6rem;
+      right: -2rem;
+    }
+  }
+  &:hover {
+    &::after {
+      transform: scaleX(1,1);
+    }
+  }
+}
+
+#product-movie {
+  padding: 8rem;
+  background-color: $gray2;
+  @include sp() {
+    padding: 3rem;
+  }
+}
+.product-movie-title {
+  margin-bottom: 3rem;
+  .product-head-img {
+    @include sp() {
+      width: 70%;
+    }
+  }
+}
+
+#about-product {
+  padding: 8rem;
+  background-color: $gray3;
+  overflow-y: hidden;
+  .border1 {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 380px;
+    height: 3px;
+    width: 0;
+    background-color: $blue;
+    transition-duration: .5s;
+    @include sp() {
+      height: 2px;
+      top: 65px;
+      left: 70px;
+    }
+  }
+  .border2 {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 750px;
+    height: 3px;
+    width: 0;
+    background-color: $blue;
+    transition-duration: .5s;
+    transition-delay: .2s;
+    @include sp() {
+      height: 2px;
+      top: 140px;
+      left: 70px;
+      transition-delay: 0;
+    }
+  }
+  @include sp() {
+    padding: 3rem;
+  }
+}
+.about-product-inner {
+  position: relative;
+}
+.about-product-title {
+  .about-product-img {
+    @include sp() {
+      width: 126px;
+    }
+  }
+}
+.about-product-subtitle {
+  margin-top: 2rem;
+  margin-bottom: 3rem;
+  @include sp() {
+    margin-top: 1rem;
+  }
+}
+.product-center-box {
+  @include sp() {
+    width: 50%;
+  }
+  .product-center-img {
+    max-width: 200px;
+    margin-bottom: 2.5rem;
+    @include sp() {
+      width: 100%;
+      margin-bottom: 1.5rem;
+    }
+  }
+}
+.about-product-text {
+  line-height: 40px;
+  margin-bottom: 20rem;
+  @include sp() {
+    line-height: 27px;
+    margin-bottom: 320px;
+  }
+}
+.detailbtn-box {
+  @extend .moviebtn-box;
+  width: 118px;
+}
+.detailbtn-link-subtitle {
+  @extend .moviebtn-link-subtitle;
+}
+.detailbtn-link {
+  @extend .moviebtn-link;
+  .box-for-arrow {
+    @include arrow-slide-btn();
+    &::before {
+      width: 15px;
+      height: 15px;
+      margin-top: -.6rem;
+      right: -3rem;
+    }
+    &::after {
+      width: 15px;
+      height: 15px;
+      margin-top: -.6rem;
+    }
+    &:hover {
+      &::after {
+        right: -4rem;
+      }
+    }
+  }
+}
+.product-item-box {
+  position: absolute;
+  width: 320px;
+  height: 570px;
+  left: -3rem;
+  top: 50%;
+  transform: translateY(-50%);
+  @include sp() {
+    width: 99px;
+    height: 177px;
+    left: calc(100% - 99px);
+    top: 19%;
+    .product-item {
+      width: 100%;
+    }
+  }
+}
+.about-product-visual-box {
+  background: url('img/product-visual.png');
+  position: absolute;
+  top: 50%;
+  right: -70%;
+  transform: translateY(-40%);
+  width: 1198px;
+  height: 1800px;
+  @include sp() {
+    top: 70%;
+    right: -5rem;
+    width: 340px;
+    height: 200px;
+    background-size: cover;
+    background-color: $gray;
+  }
+}
+
+#how {
+  padding: 8rem;
+  background-color: $gray4;
+  overflow-y: hidden;
+  .border1 {
+    position: absolute;
+    right: 0;
+    top: 380px;
+    height: 3px;
+    width: 0;
+    background-color: $blue;
+    transition-duration: .5s;
+    @include sp() {
+      top: 450px;
+      height: 2px;
+    }
+  }
+  @include sp() {
+    padding: 3rem;
+  }
+}
+.how-inner {
+  position: relative;
+}
+.how-title {
+  .how-img {
+    @include sp() {
+      width: 126px;
+    }
+  }
+}
+.how-subtitle {
+  @extend .about-product-subtitle;
+}
+.how-text {
+  width: 425px;
+  text-align: left;
+  margin-top: 135px;
+  margin-left: auto;
+  margin-bottom: 10rem;
+  line-height: 40px;
+  @include sp() {
+    margin-top: 300px;
+    line-height: 27px;
+    margin-bottom: 60px;
+  }
+}
+.detailbtn-wrapper-r {
+  width: 425px;
+  margin-left: auto;
+  margin-bottom: 260px;
+  @include sp() {
+    margin-bottom: 60px;
+  }
+}
+.how-visual-box {
+  background: url('img/howto-visual.png');
+  position: absolute;
+  top: 50%;
+  left: -25%;
+  transform: translateY(-40%);
+  width: 761px;
+  height: 1165px;
+  @include sp() {
+    top: 30%;
+    left: -5rem;
+    width: 340px;
+    height: 200px;
+    background-size: cover;
+    background-color: $gray;
+  }
+}
+
+#scene {
+  padding: 8rem;
+  background-color: $gray3;
+  overflow-y: hidden;
+  .border1 {
+    position: absolute;
+    left: 0;
+    top: 390px;
+    height: 3px;
+    width: 0;
+    background-color: $blue;
+    transition-duration: .5s;
+    @include sp() {
+      top: 450px;
+      height: 2px;
+    }
+  }
+  @include sp() {
+    padding: 3rem;
+  }
+}
+.scene-inner {
+  position: relative;
+}
+.scene-title {
+  .scene-img {
+    @include sp() {
+      width: 90px;
+    }
+  }
+}
+.scene-subtitle {
+  @extend .about-product-subtitle;
+}
+.scene-text {
+  @extend .how-text;
+  margin-right: auto;
+}
+.detailbtn-wrapper-l {
+  width: 425px;
+  margin-right: auto;
+  margin-bottom: 260px;
+  @include sp() {
+    margin-bottom: 60px;
+  }
+}
+.scene-visual-box {
+  background: url('img/case-visual.png');
+  position: absolute;
+  top: 50%;
+  right: -15%;
+  transform: translateY(-30%);
+  width: 761px;
+  height: 1165px;
+  @include sp() {
+    top: 30%;
+    right: -5rem;
+    width: 340px;
+    height: 200px;
+    background-size: cover;
+    background-color: $gray;
+  }
+}
+
+#interview {
+  padding: 8rem 0;
+  background-color: $gray2;
+  @include sp() {
+    padding: 3rem 0;
+  }
+}
+.interview-title {
+  .interview-img {
+    @include sp() {
+      width: 120px;
+    }
+  }
+}
+.interview-subtitle {
+  @extend .about-product-subtitle;
+}
+.interview-box {
+  margin-bottom: 0;
+  .interview-top {
+    position: relative;
+    width: 1180px;
+    height: 560px;
+    margin: 5rem auto 0;
+    background-image: url('img/interview-visual.jpg');
+    background-repeat: no-repeat;
+    background-size: 95%;
+    background-position: center;
+    .border1 {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: $blue;
+      transition: .5s ease-in-out;
+    }
+    .border2 {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 2px;
+      height: 0;
+      background-color: $blue;
+      transition: .5s ease-in-out;
+    }
+    .border3 {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 2px;
+      height: 0;
+      background-color: $blue;
+      transition: .5s ease-in-out;
+    }
+    @include sp() {
+      width: 340px;
+      height: 240px;
+      background-image: url('img/interview-visual-sp.jpg');
+    }
+  }
+  .interview-down {
+    width: 1180px;
+    margin: 0 auto;
+    .interview-down-left,.interview-down-right {
+      padding: 30px 32px;
+      @include sp() {
+        padding: 20px;
+      }
+    }
+    .interview-down-left {
+      position: relative;
+      width: 826px;
+      .interview-text {
+        line-height: 40px;
+        @include sp() {
+          line-height: 27px;
+        }
+      }
+      .border1 {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background-color: $blue;
+        transition: .5s ease-in-out;
+        transition-delay: .2s;
+      }
+      .border2 {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 2px;
+        height: 0;
+        background-color: $blue;
+        transition: .5s ease-in-out;
+        transition-delay: .2s;
+      }
+      .border3 {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 2px;
+        height: 0;
+        background-color: $blue;
+        transition: .5s ease-in-out;
+        transition-delay: .2s;
+      }
+      .border4 {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background-color: $blue;
+        transition: .5s ease-in-out;
+        transition-delay: .2s;
+        @include sp() {
+          display: none;
+        }
+      }
+      @include sp() {
+        width: 100%;
+        border-bottom: none;
+      }
+    }
+    .interview-down-right {
+      position: relative;
+      width: 354px;
+      .detailbtn-box {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        left: 50%;
+        transform: translateX(-50%);
+        @include sp() {
+          margin-top: -.5rem;
+        }
+      }
+      .border1 {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background-color: $blue;
+        transition: .5s ease-in-out;
+        transition-delay: .2s;
+      }
+      .border2 {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 2px;
+        height: 0;
+        background-color: $blue;
+        transition: .5s ease-in-out;
+        transition-delay: .2s;
+      }
+      .border5 {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background-color: $blue;
+        transition: .5s ease-in-out;
+        transition-delay: .2s;
+      }
+      @include sp() {
+        width: 100%;
+        border-left: 2px solid $blue;
+        padding: 0;
+        height: 84px;
+      }
+    }
+    @include sp() {
+      width: 340px;
+    }
+  }
+}
+
+#support {
+  padding: 8rem;
+  background-color: $gray3;
+  overflow-y: hidden;
+  .border1 {
+    position: absolute;
+    left: 0;
+    top: 390px;
+    height: 3px;
+    width: 0;
+    background-color: $blue;
+    transition-duration: .5s;
+    @include sp() {
+      top: 450px;
+      height: 2px;
+    }
+  }
+  @include sp() {
+    padding: 3rem;
+  }
+}
+.support-inner {
+  position: relative;
+}
+.support-title {
+  .support-img {
+    @include sp() {
+      width: 110px;
+    }
+  }
+}
+.support-subtitle {
+  @extend .about-product-subtitle;
+}
+.support-text {
+  @extend .how-text;
+  margin-right: auto;
+  @include sp() {
+    margin-bottom: 3rem;
+  }
+}
+.questionbtn-wrapper-l {
+  width: 470px;
+  height: 30px;
+  margin-right: auto;
+  margin-bottom: 260px;
+  .questionbtn-box {
+    position: relative;
+    height: 100%;
+    .questionbtn-link {
+      position: relative;
+      display: block;
+      @include arrow-slide-btn();
+      @include LinkColor($white,$white);
+      &:not(:last-child) {
+        margin-right: 4rem;
+      }
+      &::after,&::before {
+        position: absolute;
+        content: '';
+        width: 15px;
+        height: 15px;
+        margin-top: -.6rem;
+      }
+      &::before {
+        right: -2rem;
+      }
+      &::after {
+        right: -1rem;
+      }
+      &:hover {
+        &::before {
+          right: -3.5rem;
+        }
+        &::after {
+          right: -2.5rem;
+        }
+      }
+      @include sp() {
+        font-size: 14px;
+      }
+    }
+  }
+  @include sp() {
+    width: 100%;
+    margin-bottom: 30px;
+  }
+}
+.support-visual-box {
+  background: url('img/support-visual.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  top: 50%;
+  right: -15%;
+  transform: translateY(-30%);
+  width: 761px;
+  height: 1165px;
+  @include sp() {
+    top: 30%;
+    left: -5rem;
+    width: 340px;
+    height: 200px;
+    background-size: cover;
+    background-color: $gray;
+  }
+}
+
+#footer {
+  padding: 8rem;
+  background-color: $gray2;
+  @include sp() {
+    padding: 3rem;
+  }
+}
+.sns {
+  width: 125.5px;
+  margin: 0 auto 3rem;
+  list-style: none;
+  .sns-item {
+    &:not(:first-child) {
+      margin-left: 2rem;
+    }
+  }
+}
+.footer-logo {
+  margin-bottom: 3rem;
+  .footer-logo-img {
+    width: 324px;
+    margin-right: 4rem;
+  }
+}
+.address {
+  margin-bottom: 3rem;
+}
+.footer-nav {
+  list-style: none;
+  padding: 0;
+  .footer-nav-item {
+    &:not(:first-child) {
+      margin-left: 2rem;
+      padding-left: 1rem;
+      border-left: 1px solid lighten(black,20%);
+    }
+    @include sp() {
+      &:not(:first-child) {
+        border: none;
+        margin: 0;
+      }
+    }
+  }
+}
+
+#entrance {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: $gray4;
+  z-index: 9000;
+}
+.entrance-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 220px;
+  height: 220px;
+  transform: translate(-50%,-50%);
+}
+.lod-logo {
+  width: 220px;
+  transform: scaleY(0);
+  transition: .5s;
+  transform-origin: bottom;
+  .lod-loog-img {
+    width: 100%;
+  }
+}
+.lod-border {
+  height: 2px;
+  transform: scaleY(0);
+  transition: .5s ease-in-out;
+  background-color: $blue;
+  margin: 1rem 0;
+}
+.lod-logo-txt,.lod-txt {
+  width: 220px;
+  .lod-logo-txt-img,.lod-txt-img {
+    width: 20%;
+  }
+}
+.lod-logo-txt {
+  .lod-logo-txt-img {
+    transform: scaleY(0);
+    transform-origin: top;
+    &:nth-child(1) {
+      transition: .1s;
+    }
+    &:nth-child(2) {
+      transition: .4s;
+    }
+    &:nth-child(3) {
+      transition: .7s;
+    }
+    &:nth-child(4) {
+      transition: 1.0s;
+    }
+    &:nth-child(5) {
+      transition: 1.3s;
+    }
+  }
+}
+.lod-txt {
+  margin-top: 6rem;
+  .lod-txt-img {
+    opacity: 0;
+    &:nth-child(2) {
+      transition-delay: .3s;
+    }
+    &:nth-child(4) {
+      transition-delay: .5s;
+    }
+    &:nth-child(6) {
+      transition-delay: .7s;
+    }
+    &:nth-child(8) {
+      transition-delay: .9s;
+    }
+    &:nth-child(1) {
+      transition-delay: .2s;
+    }
+    &:nth-child(3) {
+      transition-delay: .4s;
+    }
+    &:nth-child(5) {
+      transition-delay: .6s;
+    }
+    &:nth-child(7) {
+      transition-delay: .8s;
+    }
+  }
+  .a {
+    transform: translateX(-100%);
+  }
+  .b {
+    transform: translateX(-200%);
+  }
+}
