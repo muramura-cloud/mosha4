@@ -870,7 +870,9 @@ a {
       width: 99px;
       height: 177px;
       left: calc(100% - 99px);
-      top: 150px; }
+      top: 200px;
+      opacity: 0.4;
+      -webkit-transition: .5s; }
       .product-item-box .product-item {
         width: 100%; } }
 
@@ -886,7 +888,7 @@ a {
   @media (max-width: 768px) {
     .about-product-visual-box {
       top: 70%;
-      right: -5rem;
+      right: -4.5rem;
       width: 340px;
       height: 200px;
       background-size: cover;
@@ -940,7 +942,8 @@ a {
   margin-bottom: 260px; }
   @media (max-width: 768px) {
     .detailbtn-wrapper-r {
-      margin-bottom: 60px; } }
+      margin-bottom: 60px;
+      width: 100%; } }
 
 .how-visual-box {
   background: url("../img/howto-visual.png");
@@ -997,6 +1000,7 @@ a {
   margin-bottom: 260px; }
   @media (max-width: 768px) {
     .detailbtn-wrapper-l {
+      width: 100%;
       margin-bottom: 60px; } }
 
 .scene-visual-box {
@@ -1011,7 +1015,7 @@ a {
   @media (max-width: 768px) {
     .scene-visual-box {
       top: 30%;
-      right: -5rem;
+      right: -4.5rem;
       width: 340px;
       height: 200px;
       background-size: cover;
@@ -1305,7 +1309,7 @@ a {
   @media (max-width: 768px) {
     .support-visual-box {
       top: 30%;
-      left: -5rem;
+      left: -4.5rem;
       width: 340px;
       height: 200px;
       background-size: cover;

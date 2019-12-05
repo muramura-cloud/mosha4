@@ -42,6 +42,7 @@ $(function() {
         // スマートフォン用処理
         $("#about-product .border1").css({"width":"142px"});
         $("#about-product .border2").css({"width":"142px"});
+        $("#about-product .product-item-box").css({"top":"150px","opacity":"1"});
       } else {
         // PC用処理
         $("#about-product .border1").css({"width":"416px"});
@@ -49,13 +50,13 @@ $(function() {
       }
     }
     if(windowScroll>how) {
-      $("#how .border1").css({"width":"425px"});
+      $("#how .border1").css({"width":"330px"});
     }
     if(windowScroll>scene) {
-      $("#scene .border1").css({"width":"425px"});
+      $("#scene .border1").css({"width":"330px"});
     }
     if(windowScroll>support) {
-      $("#support .border1").css({"width":"425px"});
+      $("#support .border1").css({"width":"330px"});
     }
     if(windowScroll>interview-300) {
       $("#interview .border1").css({"width":"100%"});
